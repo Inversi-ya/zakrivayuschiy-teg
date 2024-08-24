@@ -163,7 +163,7 @@
   font-size: var(--body-font-size);
 }
 
-.img_wrap{
+.img_wrap {
   display: flex;
   border-style: solid;
   border-color: var(--accent-font);
