@@ -31,7 +31,7 @@
   background-color: var(--bg-color);
   background-image: var(--bg-gradient);
   background-size: cover;
-
+  background-attachment: fixed;
 }
 
 .main {
@@ -39,6 +39,7 @@
   flex-direction: column;
   align-items: center;
   gap: 50px;
+  padding-bottom: 100px;
 }
 
 .header, .card {
@@ -68,24 +69,6 @@
 
 }
 
-.save-button,
-.card__icon-button,
-.theme-menu__button,
-.card__like-button,
-.modal-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.theme-menu__button:focus,
-.like-icon:focus,
-.card__like-button:focus,
-.card__icon-button:focus,
-.save-button:focus,
-.modal-button:focus {
-  outline: none;
-}
 
 /* _______переключатели тем_______ */
 
@@ -119,6 +102,7 @@
     content: '';
     display: block;
     height: 2px;
+    opacity: 0.6;
     padding-top: 1px;
     background-color: var(--accent-color);
     transform: scaleX(0);
@@ -165,8 +149,9 @@
 
 .img_wrap {
   display: flex;
+  position: relative;
   border-style: solid;
-  border-color: var(--accent-font);
+  /* border-color: var(--accent-color); */
   border-width: 2px 0px 2px 0px;
 }
 
@@ -206,7 +191,7 @@
 
 .text {
   padding: 25px;
-  margin-top: 5px;
+  /* margin-top: 5px; */
   line-height: 21px;
 }
 
@@ -222,8 +207,9 @@ p:first-child {
   width: 100%;
   flex-direction: row;
   justify-content: end;
-  padding: 25px;
-  font-family: var(--accent-font);
+  top: 25px;
+  right: 25px;
+  font-family: var(--accent-font, fantasy);
   font-size: 14px;
   mix-blend-mode: hard-light;
   opacity: 0.5;
@@ -255,19 +241,9 @@ or (-webkit-text-stroke: 1px var(--bg-color, white))) {
 
 /* иконки */
 
-.card__icon-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  border: 2px solid transparent;
-  transition: 0.3s ease;
-  block-size: 38px;
-}
 
-.card__icon-button:focus-visible {
-  border-color: var(--accent-color);
-}   
+
+
 
 .floppy {
   z-index: 1;
@@ -284,9 +260,36 @@ or (-webkit-text-stroke: 1px var(--bg-color, white))) {
 
 /* кнопки */
 
-.card__like-button,
-.save-button,
-.modal-button {
+.card__icon-button,
+.theme-menu__button,
+.main-button-style {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-menu__button:focus,
+.like-icon:focus,
+.card__icon-button:focus,
+.main-button-style:focus {
+  outline: none;
+}
+
+.card__icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+  block-size: 38px;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--accent-color);
+}
+
+.main-button-style {
   display: flex;
   align-items: center;
   position: relative;
@@ -294,7 +297,6 @@ or (-webkit-text-stroke: 1px var(--bg-color, white))) {
   background-color: var(--bg-color);
   gap: 8px;
   transition: box-shadow 0.3s;
-
 }
 
 .card__like-button {
@@ -317,21 +319,15 @@ or (-webkit-text-stroke: 1px var(--bg-color, white))) {
   mix-blend-mode: difference;
 }
 
-.save-button:hover,
-.card__like-button:hover,
-.modal-button:hover {
+.main-button-style:hover {
   color: var(--bg-color);
 }
 
-.save-button:focus-visible,
-.card__like-button:focus-visible,
-.modal-button:focus-visible {
+.main-button-style:focus-visible {
   box-shadow: 2px 2px 0 0 var(--accent-color);
 }
 
-.save-button::after,
-.card__like-button::after,
-.modal-button::after {
+.main-button-style::after {
   position: absolute;
   inset: 0;
   display: block;
@@ -344,12 +340,9 @@ or (-webkit-text-stroke: 1px var(--bg-color, white))) {
   transition: 0.5s ease-in-out;
 }
 
-.save-button:hover::after,
-.card__like-button:hover::after,
-.modal-button:hover::after {
+.main-button-style:hover::after {
   transform: scaleX(1);
 }
-
 
 /* _____сердце анимация_____ */
 
@@ -513,7 +506,7 @@ dialog::backdrop {
   }
 
   .label {
-    padding: 25px 11px;
+    right: 11px;
   }
 
   dialog[open] {
@@ -522,5 +515,3 @@ dialog::backdrop {
   }
 
 }
-
-
